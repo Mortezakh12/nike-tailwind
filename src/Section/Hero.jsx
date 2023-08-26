@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../Components/Button";
 import ShoeCard from "../Components/ShoeCard";
 import { shoes, statistics } from "../Constants";
@@ -5,6 +6,7 @@ import { arrowRight } from "../assets/icons";
 import { bigShoe1 } from "../assets/images";
 
 const Hero = () => {
+  const [bigShoeImg, setbigShoeImg] = useState(bigShoe1)
   return (
     <section
       id="home"
@@ -44,17 +46,21 @@ const Hero = () => {
       </div>
       <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
         <img
-          src={bigShoe1}
+          src={bigShoeImg}
           alt="shoe colletion"
           width={610}
           height={502}
           className="object-contain relative z-10"
         />
-        <div>
+        <div className="flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6">
           {shoes.map((shoe) => {
             return (
               <div key={shoe}>
-                <ShoeCard imgURL={shoe} changeBigShoeImage={()=>{}} />
+                <ShoeCard
+                  imgURL={shoe}
+                  changeBigShoeImage={(shoe) => setbigShoeImg(shoe)}
+                  bigShoeImg={bigShoeImg}
+                />
               </div>
             );
           })}
