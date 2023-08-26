@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import Button from "../Components/Button";
 import ShoeCard from "../Components/ShoeCard";
 import { shoes, statistics } from "../Constants";
@@ -6,7 +6,9 @@ import { arrowRight } from "../assets/icons";
 import { bigShoe1 } from "../assets/images";
 
 const Hero = () => {
-  const [bigShoeImg, setbigShoeImg] = useState(bigShoe1)
+  const [bigShoeImg, setbigShoeImg] = useState(bigShoe1);
+  const id= useId("");
+  console.log(id);
   return (
     <section
       id="home"
@@ -32,7 +34,7 @@ const Hero = () => {
         <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-20">
           {statistics.map((stat) => {
             return (
-              <div key={stat.label}>
+              <div key={id}>
                 <p className="text-4xl font-palanquin font-bold">
                   {stat.value}
                 </p>
